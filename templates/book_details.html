@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ book.title }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="detail-card">
+
+<h1>{{ book.title }}</h1>
+
+<h3>{{ book.author }}</h3>
+
+<p>
+{{ book.description }}
+</p>
+
+<a href="/">Back</a>
+
+</div>
+
+</body>
+</html>
