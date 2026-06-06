@@ -3,8 +3,12 @@
 A simple web application built with Flask and MongoDB that allows users to manage their personal book collection.
 
 ## 👥 Team
-- Erfan Moadeli
-- Tanisha Patel
+
+| Member | GitHub |
+|--------|--------|
+| Erfan Moadeli | [@mdl-erfan](https://github.com/mdl-erfan) |
+| Tanisha Patel | [@Tanishqptl](https://github.com/Tanishqptl) |
+
 
 ---
 
@@ -112,3 +116,6 @@ The app is deployed on **Render.com** and uses **MongoDB Atlas** as the cloud da
 Live URL: https://book-tracker-r7t6.onrender.com
 
 ---
+## 🤖 AI Tools Used
+This project was developed with assistance from Claude (Anthropic).
+Prompts are listed in LLM_prompts.txt
