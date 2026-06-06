@@ -109,6 +109,6 @@ http://127.0.0.1:5000
 
 The app is deployed on **Render.com** and uses **MongoDB Atlas** as the cloud database.
 
-Live URL: *(add after deployment)*
+Live URL: https://book-tracker-r7t6.onrender.com
 
 ---
