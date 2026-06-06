@@ -116,3 +116,6 @@ The app is deployed on **Render.com** and uses **MongoDB Atlas** as the cloud da
 Live URL: https://book-tracker-r7t6.onrender.com
 
 ---
+## 🤖 AI Tools Used
+This project was developed with assistance from Claude (Anthropic).
+Prompts are listed in LLM_prompts.txt
