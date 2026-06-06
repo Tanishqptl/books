@@ -22,7 +22,7 @@ try:
 except Exception as e:
     print(f"Error connecting to MongoDB: {e}")
 
-#Home route
+#-------------------- Flask route
 @app.route('/')
 def home():
     books = list(collection.find())
@@ -40,3 +40,33 @@ def book_detail(id: str):
     book = collection.find_one({"_id": ObjectId(id)})
     book["id"] = str(book["_id"])
     return render_template("book_details.html", book=book)
+
+#-------------------- API routes
+#fetch all books as JSON
+@app.route("/api/books", methods=["GET"])
+def get_books():
+    books = list(collection.find())
+    for book in books:
+        book["id"] = str(book["_id"])
+        del book["_id"] # we delete the ObjectID  so that it doesn't cause issues with Jsonify
+    return jsonify(books), 200
+
+@app.route("/api/books", methods=["POST"])
+def add_book() -> tuple:
+    data = request.get_json()
+    result = collection.insert_one(data)
+    return jsonify({"message": "Book added!", "id": str(result.inserted_id)}), 201
+
+@app.route("/api/books/<id>", methods=["PUT"])
+def update_book(id: str) -> tuple:
+    data = request.get_json()
+    collection.update_one({"_id": ObjectId(id)}, {"$set": data})
+    return jsonify({"message": "Book updated!"}), 200
+
+@app.route("/api/books/<id>", methods=["DELETE"])
+def delete_book(id: str) -> tuple:
+    collection.delete_one({"_id": ObjectId(id)})
+    return jsonify({"message": "Book deleted!"}), 200
+
+if __name__ == "__main__":
+    app.run(debug=True)
