@@ -3,8 +3,12 @@
 A simple web application built with Flask and MongoDB that allows users to manage their personal book collection.
 
 ## 👥 Team
-- Erfan Moadeli
-- Tanisha Patel
+
+| Member | GitHub |
+|--------|--------|
+| Erfan Moadeli | [@mdl-erfan](https://github.com/mdl-erfan) |
+| Tanisha Patel | [@Tanishqptl](https://github.com/Tanishqptl) |
+
 
 ---
 
