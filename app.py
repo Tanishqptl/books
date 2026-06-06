@@ -69,4 +69,4 @@ def delete_book(id: str) -> tuple:
     return jsonify({"message": "Book deleted!"}), 200
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
