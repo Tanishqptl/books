@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit {{ book.title }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='style.css') }}">
+</head>
+
+<body>
+
+<h1>Edit Book</h1>
+
+<form id="editBookForm">
+
+<input
+type="text"
+name="title"
+value="{{ book.title }}"
+required>
+
+<input
+type="text"
+name="author"
+value="{{ book.author }}"
+required>
+
+<select name="genre">
+    <option value="Fiction" {% if book.genre == "Fiction" %}selected{% endif %}>Fiction</option>
+    <option value="Non-Fiction" {% if book.genre == "Non-Fiction" %}selected{% endif %}>Non-Fiction</option>
+    <option value="Sci-Fi" {% if book.genre == "Sci-Fi" %}selected{% endif %}>Sci-Fi</option>
+    <option value="Mystery" {% if book.genre == "Mystery" %}selected{% endif %}>Mystery</option>
+    <option value="Education" {% if book.genre == "Education" %}selected{% endif %}>Education</option>
+    <option value="Horror" {% if book.genre == "Horror" %}selected{% endif %}>Horror</option>
+</select>
+
+<select name="status">
+    <option value="Want to Read" {% if book.status == "Want to Read" %}selected{% endif %}>Want to Read</option>
+    <option value="Reading" {% if book.status == "Reading" %}selected{% endif %}>Reading</option>
+    <option value="Finished" {% if book.status == "Finished" %}selected{% endif %}>Finished</option>
+    <option value="Most Favourite" {% if book.status == "Most Favourite" %}selected{% endif %}>Most Favourite</option>
+</select>
+
+<input
+type="number"
+name="rating"
+min="1"
+max="5"
+value="{{ book.rating }}">
+
+<textarea
+name="notes"
+placeholder="Notes">{{ book.notes }}</textarea>
+
+<button type="submit">
+Save Changes
+</button>
+
+</form>
+
+<script>
+document.getElementById("editBookForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(this).entries());
+    fetch("/api/books/{{ book.id }}", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(() => window.location.href = "/book/{{ book.id }}");
+});
+</script>
+
+</body>
+</html>

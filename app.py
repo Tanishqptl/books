@@ -41,6 +41,12 @@ def book_detail(id: str) -> str:
     book["id"] = str(book["_id"])
     return render_template("book_details.html", book=book)
 
+@app.route("/book/<id>/edit")
+def edit_page(id: str) -> str:
+    book = collection.find_one({"_id": ObjectId(id)})
+    book["id"] = str(book["_id"])
+    return render_template("edit_book.html", book=book)
+
 #-------------------- API routes
 #fetch all books as JSON
 @app.route("/api/books", methods=["GET"])
